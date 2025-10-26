@@ -1,4 +1,4 @@
-package apitests;
+package apitests.bookingservice;
 
 public class DeleteBookingTest {
 }
