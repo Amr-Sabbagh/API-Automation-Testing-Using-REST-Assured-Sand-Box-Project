@@ -13,9 +13,9 @@ public class BookingsService {
     private final RestfulBooker client;
 
     public BookingsService(){
-        AuthenticationService authserveice = new AuthenticationService();
+        AuthenticationService authServeice = new AuthenticationService();
         Credentials credentials = new Credentials("admin", "password123");
-        String authToken = authserveice.getAuthenticationToken(credentials);
+        String authToken = authServeice.getAuthenticationToken(credentials);
         this.client = new RestfulBooker(authToken);
     }
 
@@ -25,6 +25,17 @@ public class BookingsService {
                     .spec(client.requestSpecification)
                 .when()
                     .get(BOOKINGS_ENDPOINT)
+                .then()
+                    .extract()
+                    .response();
+    }
+
+    public Response getBookingById (int bookingId){
+        // Implementation for getting booking by ID
+        return given()
+                    .spec(client.requestSpecification)
+                .when()
+                    .get(BOOKINGS_ENDPOINT + "/" + bookingId)
                 .then()
                     .extract()
                     .response();
