@@ -19,7 +19,7 @@ public class BookingsService {
         this.client = new RestfulBooker(authToken);
     }
 
-    public Response getBookingsId (){
+    public Response getBookingsIds (){
         // Implementation for getting booking IDs
         return given()
                     .spec(client.requestSpecification)
