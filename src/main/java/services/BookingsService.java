@@ -2,6 +2,7 @@ package services;
 
 import client.RestfulBooker;
 import data.Credentials;
+import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.given;
@@ -19,7 +20,8 @@ public class BookingsService {
         this.client = new RestfulBooker(authToken);
     }
 
-    public Response getBookingsId (){
+    @Step("Get bookings IDs")
+    public Response getBookingsIds (){
         // Implementation for getting booking IDs
         return given()
                     .spec(client.requestSpecification)
@@ -30,6 +32,7 @@ public class BookingsService {
                     .response();
     }
 
+    @Step("Get booking by ID")
     public Response getBookingById (int bookingId){
         // Implementation for getting booking by ID
         return given()

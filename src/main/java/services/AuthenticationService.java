@@ -2,6 +2,7 @@ package services;
 
 import client.RestfulBooker;
 import data.Credentials;
+import io.qameta.allure.Step;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.requestSpecification;
@@ -12,6 +13,7 @@ public class AuthenticationService {
 
     RestfulBooker client = new RestfulBooker();
 
+    @Step("Get authentication token")
     public String getAuthenticationToken(Credentials credentials){
         return given()
                     .spec(client.requestSpecification)
