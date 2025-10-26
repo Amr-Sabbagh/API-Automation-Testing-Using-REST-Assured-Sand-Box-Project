@@ -14,7 +14,8 @@ public class AuthenticationService {
 
     public String getAuthenticationToken(Credentials credentials){
         return given()
-                    .spec(requestSpecification)
+                    .spec(client.requestSpecification)
+                    .body(credentials)
                 .when()
                     .post(AUTHENTICATION_ENDPOINT)
                 .then()
